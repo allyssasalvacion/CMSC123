@@ -1,0 +1,16 @@
+
+From: 228.205.223.87
+To: 139.65.193.81
+
+Roses are red,
+Violets are blue,
+Sugar is sweet,
+And so are you.
+
+From: 228.253.223.87
+To: 139.65.193.81
+
+Roses are red,
+[CORRUPTED]
+And so are you.
+[MISSING]
