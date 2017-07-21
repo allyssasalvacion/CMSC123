@@ -358,6 +358,21 @@ public class MyLinkedList<E> implements List<E> {
 
     @Override
     public List<E> subList(int fromIndex, int toIndex) {
-        return null;
+        if(fromIndex < 0 || toIndex > size()) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if(fromIndex > toIndex) {
+            throw new IllegalArgumentException();
+        }
+
+        MyLinkedList<E> sublist = new MyLinkedList<E>();
+
+        for(int i = fromIndex; i <= toIndex; i++) {
+            E e = this.get(i);
+            sublist.add(e);
+        }
+
+        return sublist;
     }
 }
