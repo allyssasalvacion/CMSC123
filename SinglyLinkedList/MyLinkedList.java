@@ -375,4 +375,26 @@ public class MyLinkedList<E> implements List<E> {
 
         return sublist;
     }
+    
+    public void merge(List l) {
+        for(int i = 0; i < l.size(); i++) {
+            Object e = l.get(i);
+
+            tail.setNext(new Node(e, null));
+            tail = tail.getNext();
+            currentSize++;
+        }
+    }
+
+    public void reverse() {
+        Node<E> current = head;
+        for(int i = size() - 1; i >= size()/2; i--) {
+            E temp1 = this.get(i);
+            E temp2 = current.getData();
+            current.setData(temp1);
+            current = current.getNext();
+
+            this.set(i, temp2);
+        }
+    }
 }
