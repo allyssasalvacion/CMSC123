@@ -202,6 +202,32 @@ public class DoublyLinkedList<E> implements MyList<E> {
         }
         return false;
     }
+    
+    public boolean remove(Node<E> p) {
+        Node<E> current = head;
+        while(true) {               // incase node p cannot be found?? not sure
+            if(current == null) {
+                break;
+            }
+            if(current == p) {
+                if(current == head) {
+                    head = head.getNext();
+                    head.getPrev().setData(null);
+                } else if(current == tail) {
+                    tail = tail.getPrev();
+                    tail.getNext().setData(null);
+                } else {
+                    current.getPrev().setNext(current.getNext());
+                    current.getNext().setPrev(current.getPrev());
+                    current.setPrev(null);
+                    current.setNext(null);
+                }
+                return true;
+            }
+            current = current.getNext();
+        }
+        return false;
+    }
 
     public void set(int index, E item) {
         if(index < 0 || index >= size()) {
