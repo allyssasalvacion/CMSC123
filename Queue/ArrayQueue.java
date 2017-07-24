@@ -63,6 +63,6 @@ public class ArrayQueue<E> implements MyArrayQueue<E> {
 
     @Override
     public int size() {
-        return size; //
+        return size;
     }
 }
