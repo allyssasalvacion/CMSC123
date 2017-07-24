@@ -2,6 +2,7 @@
  * Allyssa Albores
  * Cristina Dayuday
  */
+
 //NOT CORRECT
 public class LList implements MyList {
   private Object[] items;
