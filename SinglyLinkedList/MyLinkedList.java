@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * Created by Allyssa Albores on 20/07/2017.
  */
+
 public class MyLinkedList<E> implements List<E> {
     private Node<E> head;
     private Node<E> tail;
