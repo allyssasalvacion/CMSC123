@@ -14,27 +14,27 @@ public class ArrayQueueTest extends TestCase {
     }
 
     public void testEnqueue() {
-        queue.enqueue("Allyssa");
-        queue.enqueue("Albores");
-        queue.enqueue("Gino");
-        queue.enqueue("Hilongo");
+        queue.enqueue("A");
+        queue.enqueue("B");
+        queue.enqueue("C");
+        queue.enqueue("D");
 
-        assertEquals("Allyssa", queue.dequeue());
-        assertEquals("Albores", queue.dequeue());
-        assertEquals("Gino", queue.dequeue());
-        assertEquals("Hilongo", queue.dequeue());
+        assertEquals("A", queue.dequeue());
+        assertEquals("B", queue.dequeue());
+        assertEquals("C", queue.dequeue());
+        assertEquals("D", queue.dequeue());
     }
 
     public void testDequeue() {
-        queue.enqueue("Allyssa");
-        queue.enqueue("Albores");
-        queue.enqueue("Gino");
-        queue.enqueue("Hilongo");
+        queue.enqueue("A");
+        queue.enqueue("B");
+        queue.enqueue("C");
+        queue.enqueue("D");
         queue.dequeue();
         queue.dequeue();
 
-        assertEquals("Gino", queue.front());
-        assertEquals("Gino", queue.dequeue());
+        assertEquals("C", queue.front());
+        assertEquals("C", queue.dequeue());
     }
 
     public void testSize() {
