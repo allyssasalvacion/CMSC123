@@ -4,9 +4,6 @@ import java.util.Stack;
  * Created by Allyssa Albores on 25/07/2017.
  */
 public class UnbalancedBraces {
-    private static Stack<Character> stack1 = new Stack<Character>();
-    private static Stack<Integer> stack2 = new Stack<Integer>();
-
     public static void main(String[] args) {
         char[] array = {'[', '{', '(', '}', ']'};
 
@@ -18,6 +15,8 @@ public class UnbalancedBraces {
     }
 
     public static void unbalancedBraces(char[] array) {
+        Stack<Character> stack1 = new Stack<Character>();
+        Stack<Integer> stack2 = new Stack<Integer>();
         int flag = 0;
 
         if(array.length % 2 != 0) {
