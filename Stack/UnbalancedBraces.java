@@ -1,3 +1,5 @@
+package ThirdLongExam;
+
 import java.util.Stack;
 
 /**
@@ -5,7 +7,7 @@ import java.util.Stack;
  */
 public class UnbalancedBraces {
     public static void main(String[] args) {
-        char[] array = {'[', '{', '(', '}', ']'};
+        char[] array = {'(', '{', '(', '[', ']', '}', '}',')'};
 
         unbalancedBraces(array);
 
@@ -17,29 +19,53 @@ public class UnbalancedBraces {
     public static void unbalancedBraces(char[] array) {
         Stack<Character> stack1 = new Stack<Character>();
         Stack<Integer> stack2 = new Stack<Integer>();
-        int flag = 0;
+        Stack<Character> stack3 = new Stack<Character>();
+        Stack<Integer> stack4 = new Stack<Integer>();
 
-        if(array.length % 2 != 0) {
-            flag = array.length/2;
+        // set first
+        for(int i = 0; i < array.length/2; i++) {
+            if(!(array[i] == '(' || array[i] == '{' || array[i] == '[')) {
+                array[i] = '#';
+            }
+
+            stack1.push(array[i]);
+            stack2.push(i);
         }
 
-        for(int i = 0; i < array.length; i++) {
-            if((array[i] == '(' || array[i] == '{' || array[i] == '[') && flag != i) {
-                stack1.push(array[i]);
-                stack2.push(i);
-            } else if((array[i] == ')' || array[i] == '}' || array[i] == ']') && flag != i) {
-                if(stack1.peek() == '(' && array[i] == ')'
-                        || stack1.peek() == '{' && array[i] == '}'
-                        || stack1.peek() == '[' && array[i] == ']') {
-                    stack1.pop();
-                    stack2.pop();
-                } else {
+        if(array.length % 2 != 0) {
+            array[array.length/2] = '#';
+            for(int i = array.length - 1; i > array.length/2; i--) {
+                if(!(array[i] == ')' || array[i] == '}' || array[i] == ']')) {
                     array[i] = '#';
-                    int temp = stack2.pop();
-                    array[temp] = '#';
                 }
-            } else if(flag == i){
-                array[i] = '#';
+
+                stack3.push(array[i]);
+                stack4.push(i);
+            }
+        } else {
+            for(int i = array.length - 1; i >= array.length/2; i--) {
+                if(!(array[i] == ')' || array[i] == '}' || array[i] == ']')) {
+                    array[i] = '#';
+                }
+
+                stack3.push(array[i]);
+                stack4.push(i);
+            }
+        }
+
+        while(!(stack1.isEmpty())) {
+            if(!((stack1.peek() == '(' && stack3.peek() == ')') ||
+                    (stack1.peek() == '[' && stack3.peek() == ']') ||
+                    (stack1.peek() == '{' && stack3.peek() == '}'))) {
+                stack1.pop();
+                stack3.pop();
+                array[stack2.pop()] = '#';
+                array[stack4.pop()] = '#';
+            } else {
+                stack1.pop();
+                stack2.pop();
+                stack3.pop();
+                stack4.pop();
             }
         }
     }
